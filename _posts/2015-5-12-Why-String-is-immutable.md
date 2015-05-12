@@ -3,8 +3,8 @@ layout: post
 title: Why String is immutable
 ---
 
-[Why String is immutable in Java?](http://stackoverflow.com/questions/22397861/why-is-string-immutable-in-java)
-=====================================
+**Question**: [Why String is immutable in Java?](http://stackoverflow.com/questions/22397861/why-is-string-immutable-in-java)
+
 
 `String` is immutable for several reasons, here is a summary:
 
