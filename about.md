@@ -4,12 +4,12 @@ title: About
 permalink: /about/
 ---
 
-Some information about you!
+Software developer 
 
 ### More Information
 
-A place to include any other types of information that you'd like to include about yourself.
+C++/C Python JavaScript Node.js MongoDB
 
 ### Contact me
 
-[email@domain.com](mailto:email@domain.com)
+[richzw1983@163.com](mailto:richzw1983@163.com)
