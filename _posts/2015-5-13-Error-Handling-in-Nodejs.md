@@ -1,4 +1,7 @@
-
+---
+layout: post
+title: Error Handling in Nodejs
+---
 
 You should also be familiar with the three main ways to deliver an error in Node.js:
 
