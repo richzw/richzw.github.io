@@ -127,3 +127,9 @@ divider.on('divided', function(x,y,result){
 // Divide
 divider.divide(4,2).divide(4,0)
 ```
+
+
+Ref:
+
+- [http://stackoverflow.com/questions/7310521/node-js-best-practice-exception-handling](http://stackoverflow.com/questions/7310521/node-js-best-practice-exception-handling)
+- [https://www.joyent.com/developers/node/design/errors](https://www.joyent.com/developers/node/design/errors)
