@@ -49,6 +49,8 @@ What is the value of i after assignment?
 
 - **Copy Constructor and Constructor**
 
+[Post](http://stackoverflow.com/questions/1051379/is-there-a-difference-in-c-between-copy-initialization-and-direct-initializati)
+
 ```cpp
 class Pt {
 public:
