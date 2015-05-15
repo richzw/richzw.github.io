@@ -47,4 +47,94 @@ What is the value of i after assignment?
 
 > Here the second x is initialized with its own (indeterminate) value. ]
 
+- **Copy Constructor and Constructor**
 
+```cpp
+class Pt {
+public:
+	Pt() {
+		std::cout << "default constructor" << std::endl;
+	}
+
+	Pt(const Pt& rvalue) {
+		std::cout << "copy constructor" << std::endl;
+	}
+
+	Pt(const Pt&& rvalue) {
+		std::cout << "move constructor" << std::endl;
+	}
+
+	Pt& operator=(const Pt& rvalue) {
+		std::cout << "copy assignment" << std::endl;
+		return *this;
+	}
+
+	Pt& operator=(const Pt&& rvalue) {
+		std::cout << "move assignment" << std::endl;
+	}
+
+	~Pt() {
+		std::cout << "~Pt" << std::endl;
+	}
+
+	//a function to call in order to prevent getting optimized out
+	void test() {
+		std::cout << " " << std::endl;
+	}
+};
+
+int i = 1;
+
+int _tmain(int argc, _TCHAR* argv[])
+{
+	{
+		//here the compiler thinks that we declare a function
+		std::cout << "step 1" << std::endl;
+		Pt pt();
+	}
+	{
+		//here the compiler calls a default constructor
+		std::cout << "step 2" << std::endl;
+		Pt pt;
+	}
+	{
+		//here the compiler calls a default constructor too
+		std::cout << "step 3" << std::endl;
+		Pt pt = Pt();
+	}
+
+	{
+		//here the compiler calls a copy constructor and doesn't call the default constructor prior to that
+		// O_o
+		std::cout << "step 4" << std::endl;
+		Pt pt = pt;
+
+		/*
+		Constructions like `type object = something` call copy constructors, not assignment operators
+
+		Having this in mind, here's what happens:
+
+		1. `Pt pt =` -> at this point, `Pt` object is created, named `pt` (nothing is initialized at this point)
+
+		2. `= pt;` -> at this point, `pt`'s copy constructor is called with argument - itself (`pt`)
+		
+		3. as `pt` is created BUT not initialized (in `1.`), this is (kinda) valid - `pt`'s copy constructor (in `2.`) 
+		will be "properly" executed, taking as right-hand-side argument the already existing and uninitialized object pt (from `1.` again)
+		Shortly - this is bad.
+
+		It's worth noting, that if the `pt` object is global or static, it will be default-initialized at step `1.` - after reaching the `=`.
+		
+		*/
+	}
+
+	{
+		Pt pt1;
+		Pt pt2;
+		std::cout << "step 5" << std::endl;
+		
+		pt1 = pt2;
+	}
+
+	return 0;
+}
+```
